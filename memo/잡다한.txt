@@ -1,0 +1,23 @@
+len(df.['tran'].unique())
+
+offline['age'].value_counts()
+
+import pandas as pd
+import matplotlib.pyplot as plt 
+
+import platform 
+if platform.system() == 'Darwin':
+    plt.rc('font', family = 'AppleGothic')
+else:
+    plt.rc('font', family = 'Malgun Gothic')
+
+
+df.pivot_table(
+	index = '',
+	columns = '',
+	values = '',
+	aggfunc = ['','']
+).plot()
+
+import warnings
+warnings.filterwarnings('ignore')
