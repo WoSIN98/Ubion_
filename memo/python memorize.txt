@@ -179,4 +179,27 @@ Se.map(함수)
 Se.replace("전", "후")
 
 ## 비트연산자
+~ : 2진수로 이루어진 데이터에서 0과 1을 반대로 교체
+
+## 고유한 값들 출력
+df['a'].unique()            -> array 형태로 출력
+set(df['a'])         {} 형태로 출력              list(set(df['a'])
+df['a'].value_counts().index                       df['a'].value_counts() 는 스리즈 형태
+
+result =[]
+for i in list
+# if i in not result:
+# if result.count
+# try:
+	result.index(i)                  시도할 코드
+   except:
+	result.append(i)	           try 구문의 코드가 에러 발생시 실행 코드 (예외처리)
+print(result)
+
+
+
+
+
+
+
 
