@@ -1,0 +1,70 @@
+
+시스템 환경 변수 편집에서 고급-> 환경변수-> 시스템변수 plot-> mysql주소 입력
+
+mysql -u root -p
+show databases
+;
+CREATE DATABASE ubion
+;
+show databases
+;
+use buion
+;
+CREATE TABLE user(
+id varchar(32) primary key,
+password varchar(64) not null,
+name varchar(32)
+);
+desc user
+;
+ALTER TABLE user
+MODIFY COLUMN
+name varchar(32) not null
+;
+desc user
+;
+INSERT INTO user(id, password, name)
+VALUES('test', '1234', 'kim') 
+;
+SELECT * from user
+;
+INSERT INTO user
+VALUES('test2', '1111', 'park'),
+('test3', '0000', 'lee')
+;
+update user
+set password= '7777'
+;
+update user 
+set password = '1234' 
+where id = 'test'           # where 조건식 써줘야 특정 값만 변경된다.
+;                                 
+
+delete from user             # 파일 안에서 행동하는 것이므로 파일은 안 사라진다
+where id = 'test2'            # drop 쓰면 파일 자체가 삭제된다.
+;
+# 조건으로 id 만 쓰고 있는 이유는 id가 primary key 이기 때문
+
+## 로그인
+select * from user
+where 
+id = 'test' 
+and 
+password = '1234'
+;
+# 인덱스의 개수로 로그인 성공 실패 확인 (성공시 1, 실패시 0)
+# 2가 나올 수 없는 이유는 id가 primary key이기 때문. 
+
+exit
+
+#### workbench
+# localhost 3306 지역주소에 있는 mysql에 host라는 이름으로 접속한다.
+# root 계정은 내가 내 컴퓨터에 접속할때
+
+# 녹음 4:06
+
+### 오후 시작
+
+
+
+
