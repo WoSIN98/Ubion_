@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Login Page</h1>
+
+        <!-- 유저가 입력할 수 있는 공간 -->
+        <!-- 유저가 입력한 데이터를 서버로 보내는 태그 -->
+        <!-- form 태그는 
+            action 속성 -> 유저가 입력한 데이터를 보낼 주소
+            method 속성 -> 데이터를 보내는 방식(get / post)
+        -->
+        <form action="/login" method="get">    <!-- /login 상대주소-->
+            <!-- 실제 유저가 데이터를 입력 -->
+            <!-- 유저가 입력한 데이터를 
+                {
+                    'input_id' : 유저가 입력한 id,
+                    'imput_pass' : 유저가 입력한 password
+                } 
+            -->
+            <input type="text" name="input_id"> 
+                    <!-- 유저가 입력해야 하는 값은 종료태그가 필요없다.  -->
+            <!-- 줄바꿈 태그 -->
+            <br>
+            <input type="password" name="input_pass">
+            <br>
+            <!-- 제출 버튼 생성 -->
+            <input type="submit">
+        </form>
+    </body>
+</html>         

@@ -49,7 +49,7 @@ def data_load(_path, _end = 'csv'):
             result = pd.concat([result, df], axis = 0, ignore_index = True)
     return result        
 
-## 특정 경로에 있는 파일의 목록들을 각각 파일의 이름으로 전역변수 생성하는 함수 생성  # 녹음 3:18
+## 특정 경로에 있는 파일의 목록들을 각각 파일의 이름으로 변수 생성하는 함수   
 # 매개변수 : 경로
 def data_load2(_path):
     # 입력받은 경로를 기준으로 파일의 목록을 모두 로드한다.
@@ -73,7 +73,7 @@ def data_load2(_path):
                 df = read_df(file, 'EUC-KR')  
         if len(df) != 0:
             result[f'{head}'] = df.copy()
-            print(f"{head} 전역변수 저장 완료")
+            print(f"{head} 변수 저장 완료")
         else:
             print("지원하지 않는 확장자 파일")                                 # 여기서는 continue 왜 안쓰는 지 확인 녹음 4:11, 밑에 코드가 없으므로 쓰나 안쓰나 똑같다.
     return result
