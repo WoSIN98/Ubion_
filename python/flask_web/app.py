@@ -1,5 +1,7 @@
 ## 기본적인 웹서버 설정
-# flask 웹프레임워크를 로드
+
+## 프롬프트에 pip install flask
+## flask 웹프레임워크를 로드
 from flask import Flask 
 
 ## Flask라는 Class 생성 

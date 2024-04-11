@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 ## database에 있는 MyDB1 Claas를 생성
 _db = database.MyDB(
-    _host = '172.30.1.63',
+    _host = '172.30.1.55',
     _user = 'ubion',
     _pw = '1234',
     _db = 'ubion'
