@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 _db = database.MyDB(
-    _host = '172.30.1.55',
+    _host = '172.30.1.22',
     _user = 'ubion',
     _pw = '1234',
     _db = 'ubion'
