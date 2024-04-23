@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import os
 import matplotlib.pyplot as plt
 
+### url 가져오기
 
 ## 카카오 맵 
 driver = webdriver.Chrome()
@@ -22,9 +23,35 @@ time.sleep(3)
 
 ## 상세보기 주소 가져오기 
 list_url = []
-moreview_element = driver.find_elements(By.CSS_SELECTOR, 'a[data-id="moreview"]')
-for i in range(len(moreview_element)):
-    list_url.append(moreview_element[i].get_attribute('href'))
+
+## 아래 1,2,3,4,5 리스트 번호 다 뜨도록
+# 장소 더보기 클릭
+driver.find_element(By.ID, 'info.search.place.more').click()
+time.sleep(2)
+# 1번리스트로 돌아오기
+driver.find_element(By.ID, 'info.search.page.no1').click()
+time.sleep(2)
+
+for count in range(2):
+    
+    for inx in range(2, 6):
+        
+        # 현재 리스트의 상세보기 주소 스크래핑
+        moreview_element = driver.find_elements(By.CSS_SELECTOR, 'a[data-id="moreview"]')
+        for i in range(len(moreview_element)):
+            list_url.append(moreview_element[i].get_attribute('href'))
+        # 다음 리스트 클릭
+        driver.find_element(By.ID, f'info.search.page.no{inx}').click()
+        # 5번 리스트 저장
+        if inx == 5:
+            moreview_element = driver.find_elements(By.CSS_SELECTOR, 'a[data-id="moreview"]')
+            for i in range(len(moreview_element)):
+                list_url.append(moreview_element[i].get_attribute('href'))
+        time.sleep(2)
+    # 다음 리스트 페이지 넘어가기
+    driver.find_element(By.ID ,'info.search.page.next').click()
+    time.sleep(2)
+
 
 
 ## 웹페이지 종료
@@ -43,7 +70,7 @@ data = {
 }
 
 
-
+### 기본 정보 크롤링 (상세보기 get으로 열어서 가져오기)
 
 for i in range(len(list_url)):
     ## 상세보기 웹페이지 열기
