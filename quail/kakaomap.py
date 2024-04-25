@@ -68,7 +68,12 @@ data = {
     'starCount' : [],
     'reviewCount' : []
 }
-data2 = {
+
+### 기본 정보 크롤링 (상세보기 get으로 열어서 가져오기)
+driver = webdriver.Chrome()
+for i in range(len(list_url)):
+
+    data2 = {
     'user_name' : [],
     'user_rank' : [],
     'num_response' : [],
@@ -76,11 +81,8 @@ data2 = {
     'time' : [],
     'rating' : [],
     'content' : []
-}
+    }
 
-### 기본 정보 크롤링 (상세보기 get으로 열어서 가져오기)
-driver = webdriver.Chrome()
-for i in range(len(list_url)):
     ## 상세보기 웹페이지 열기
     driver.get(list_url[i])
     driver.implicitly_wait(3)
@@ -112,19 +114,22 @@ for i in range(len(list_url)):
     ## 상세page bs4 파싱 분석
     soup = bs(driver.page_source, 'html.parser')
 
-    ##canvas 이미지 저장
+    try:
+        ##canvas 이미지 저장
 
-    test_image = driver.execute_script("return document.querySelectorAll('canvas')[1].toDataURL();")
-    image_data = test_image.split(',')[1]
+        test_image = driver.execute_script("return document.querySelectorAll('canvas')[1].toDataURL();")
+        image_data = test_image.split(',')[1]
 
-    ## Base64 디코딩하여 이미지 데이터 추출
-    image_data_decoded = base64.b64decode(image_data)
+        ## Base64 디코딩하여 이미지 데이터 추출
+        image_data_decoded = base64.b64decode(image_data)
 
-    test_image2 = driver.execute_script("return document.querySelectorAll('canvas')[2].toDataURL();")
-    image_data2 = test_image2.split(',')[1]
+        test_image2 = driver.execute_script("return document.querySelectorAll('canvas')[2].toDataURL();")
+        image_data2 = test_image2.split(',')[1]
 
-    ## Base64 디코딩하여 이미지 데이터 추출
-    image_data_decoded2 = base64.b64decode(image_data2)
+        ## Base64 디코딩하여 이미지 데이터 추출
+        image_data_decoded2 = base64.b64decode(image_data2)
+    except:
+        pass
 
         
     
@@ -196,14 +201,15 @@ for i in range(len(list_url)):
     df2 = pd.DataFrame(data2)
     df2.to_csv(f'./data2/{mer}.csv',index = False)
 
-    
-    # 이미지 데이터를 파일로 저장
-    with open(f'./image/{mer}1.png', 'wb') as f:
-        f.write(image_data_decoded)
+    try:
+        # 이미지 데이터를 파일로 저장
+        with open(f'./image/{mer}1.png', 'wb') as f:
+            f.write(image_data_decoded)
 
-    with open(f'./image/{mer}2.png', 'wb') as f:
-        f.write(image_data_decoded2)
-
+        with open(f'./image/{mer}2.png', 'wb') as f:
+            f.write(image_data_decoded2)
+    except:
+        pass
 
     
 
