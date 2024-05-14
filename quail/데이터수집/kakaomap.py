@@ -5,8 +5,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time 
-import os
-import matplotlib.pyplot as plt
 import base64
 
 ### url 가져오기
