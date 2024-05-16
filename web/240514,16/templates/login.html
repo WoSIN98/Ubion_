@@ -99,8 +99,19 @@
     
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='css/sign-in.css')}}" rel="stylesheet">
+
+    <script>
+      function check_state(_state){
+        // _state가 2라면
+        if (_state == "2"){
+          alert('로그인 실패')
+        }else if(_state == "3"){
+          alert('잠시 후 다시 시도해주세요')
+        } 
+      }
+    </script>
   </head>
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+  <body onload="check_state('{{state}}')" class="d-flex align-items-center py-4 bg-body-tertiary">
     <!-- 모드 변환 아이콘 -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
@@ -173,7 +184,7 @@
             </div>
             <!-- 로그인 버튼 -->
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-            <!-- form태그 안의 button은 data보내기 때문에 버튼 형태의 하이퍼링크로 만든다. -->
+            <!-- form태그 안의 button은 위의 action을 실행해 data보내기 때문에 버튼 형태의 하이퍼링크로 만든다. -->
             <!-- class값이 디자인, 위의 class값 그대로 가져온다. -->
             <!-- 회원 가입 버튼 -->
             <a href="/signup" class="btn btn-secondary w-100 py-2" style="margin-top: 6px;">회원가입</a>
