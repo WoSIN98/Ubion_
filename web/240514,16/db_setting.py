@@ -2,7 +2,7 @@ import pymysql
 import pymysql.cursors
 
 _db = pymysql.connect(
-    host = 'woSIN.mysql.pythonanywhere-service.com',
+    host = 'woSIN.mysql.pythonanywhere-services.com',
     port = 3306,
     user = 'woSIN',
     password = '!10JwsJws10',
@@ -15,7 +15,7 @@ cursor = _db.cursor(pymysql.cursors.DictCursor)
 ## table 생성 쿼리문 
 create_user = """
     create table 
-    if exists    
+    if not exists    
     user(
     id varchar(32) primary key,
     password varchar(64) not null,

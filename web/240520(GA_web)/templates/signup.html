@@ -100,6 +100,20 @@
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='css/sign-in.css')}}" rel="stylesheet">
 
+    <script>
+      // GA custom event를 발생
+      function ga_send(data){
+        gtag(
+          'event', 
+          'signup_write',
+          {
+            submit_data : data
+          }
+        )
+      }
+      
+    </script>
+    
     <!-- jQuery 로드 -->
     <script src="{{url_for('static', filename='js/jquery-3.7.1.min.js')}}"></script>
 
@@ -110,6 +124,7 @@
           // id가 check_id인 태그가 클릭되었을 때
           $('#check_id').click(
             function(){
+              ga_send('check_id')
               // input 태그중 name이 input_id 태그를 선택
               let input_id = $('input[name="input_id"]').val()
               // 유저가 입력한 id 값을 ajax를 이용하여 서버에게 비동기 통신으로 보낸다.
@@ -146,6 +161,9 @@
         }
       )
     </script>
+
+    <!-- ga.html파일을 포함시킨다. -->
+    {% include './ga.html' %}
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <!-- 모드 변환 아이콘 -->
@@ -228,7 +246,7 @@
                 <label for="pass2">Confirm Password</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control" name="input_name" id="name1">
+                <input type="text" class="form-control" name="input_name" id="name1" onclick="ga_send('info_write')">
                 <label for="name1">Name</label>
               </div>
             </div>

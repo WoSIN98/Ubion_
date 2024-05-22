@@ -1,0 +1,12 @@
+<!-- Google tag (gtag.js) -->
+<!-- <script src=''>는 외부의 js를 가져온다. -->
+<!-- async 해당하는 코드를 가져올 때까지 아래 script를 실행하지 않는다. -->
+<!-- selenium의 implicitly_wait()와 비슷한 기능(non-blocking code) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6G5MREBVT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W6G5MREBVT');
+</script>

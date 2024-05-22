@@ -1,0 +1,33 @@
+.slide-background{
+    margin : 0;
+    padding : 0;
+}
+.slide_img{
+    width :  100%;
+    height : 100%;
+    overflow : hidden;
+}
+.slides{
+    width : 400px;
+    height : 350px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide-container{
+    display : flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+}
+.fade{
+    animation-name: fade;
+    animation-duration: 1s;
+}
+@keyframes fade{
+    from{
+        opacity: .4;
+    }to{
+        opacity: 1;
+    }
+}
